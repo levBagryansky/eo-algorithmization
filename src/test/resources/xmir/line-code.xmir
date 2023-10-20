@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<program dob="2023-09-12T11:41:32"
+         ms="2093"
+         name="org.eolang.line-code"
+         revision="e24f541"
+         source="/home/tardis3/eo/eo-runtime/src/main/eo/org/eolang/line-code.eo"
+         time="2023-10-20T17:26:43.466220Z"
+         version="1.0-SNAPSHOT">
+   <listing># The MIT License (MIT)
+#
+#  2016-2022 Objectionary.com
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included
+# in all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
++architect yegor256@gmail.com
++home https://github.com/objectionary/eo
++package custom
++rt jvm org.eolang:eo-runtime:0.0.0
++version 0.0.0
+
+[] &gt; line
+  memory &gt; mem
+    1.plus 0
+  seq &gt; @
+    mem.write
+      mem.plus 1
+    mem.write
+      mem.plus 2
+    mem.write
+      mem.plus 3
+    mem.write
+      mem.plus 4
+    mem.write
+      mem.plus 5
+    mem.write
+      mem.plus 6
+    mem.write
+      mem.plus 7
+    mem.write
+      mem.plus 8
+</listing>
+   <errors/>
+   <sheets>
+      <sheet>not-empty-atoms</sheet>
+      <sheet>duplicate-names</sheet>
+      <sheet>many-free-attributes</sheet>
+      <sheet>broken-aliases</sheet>
+      <sheet>duplicate-aliases</sheet>
+      <sheet>global-nonames</sheet>
+      <sheet>same-line-names</sheet>
+      <sheet>self-naming</sheet>
+      <sheet>cti-adds-errors</sheet>
+      <sheet>add-refs</sheet>
+      <sheet>wrap-method-calls</sheet>
+      <sheet>expand-qqs</sheet>
+      <sheet>add-probes</sheet>
+      <sheet>vars-float-up</sheet>
+      <sheet>add-refs</sheet>
+      <sheet>sparse-decoration</sheet>
+      <sheet>unsorted-metas</sheet>
+      <sheet>incorrect-architect</sheet>
+      <sheet>incorrect-home</sheet>
+      <sheet>incorrect-version</sheet>
+      <sheet>expand-aliases</sheet>
+      <sheet>resolve-aliases</sheet>
+      <sheet>scopes</sheet>
+      <sheet>add-refs</sheet>
+      <sheet>add-default-package</sheet>
+      <sheet>broken-refs</sheet>
+      <sheet>unknown-names</sheet>
+      <sheet>noname-attributes</sheet>
+      <sheet>duplicate-names</sheet>
+      <sheet>duplicate-metas</sheet>
+      <sheet>mandatory-package-meta</sheet>
+      <sheet>mandatory-home-meta</sheet>
+      <sheet>mandatory-version-meta</sheet>
+      <sheet>correct-package-meta</sheet>
+      <sheet>prohibited-package</sheet>
+      <sheet>unused-aliases</sheet>
+      <sheet>unit-test-without-phi</sheet>
+      <sheet>set-locators</sheet>
+      <sheet>explicit-data</sheet>
+      <sheet>globals-to-abstracts</sheet>
+      <sheet>remove-refs</sheet>
+      <sheet>abstracts-float-up</sheet>
+      <sheet>remove-levels</sheet>
+      <sheet>add-refs</sheet>
+      <sheet>fix-missed-names</sheet>
+      <sheet>add-refs</sheet>
+      <sheet>broken-refs</sheet>
+      <sheet>constant-folding</sheet>
+      <sheet>set-locators</sheet>
+   </sheets>
+   <license>The MIT License (MIT)
+
+2016-2022 Objectionary.com
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</license>
+   <metas>
+      <meta line="23">
+         <head>architect</head>
+         <tail>yegor256@gmail.com</tail>
+         <part>yegor256@gmail.com</part>
+      </meta>
+      <meta line="24">
+         <head>home</head>
+         <tail>https://github.com/objectionary/eo</tail>
+         <part>https://github.com/objectionary/eo</part>
+      </meta>
+      <meta line="25">
+         <head>package</head>
+         <tail>custom</tail>
+         <part>custom</part>
+      </meta>
+      <meta line="26">
+         <head>rt</head>
+         <tail>jvm org.eolang:eo-runtime:0.0.0</tail>
+         <part>jvm</part>
+         <part>org.eolang:eo-runtime:0.0.0</part>
+      </meta>
+      <meta line="27">
+         <head>version</head>
+         <tail>0.0.0</tail>
+         <part>0.0.0</part>
+      </meta>
+   </metas>
+   <objects>
+      <o abstract=""
+         line="29"
+         loc="Φ.custom.line"
+         name="line"
+         original-name="line"
+         pos="0">
+         <o base="org.eolang.memory"
+            line="30"
+            loc="Φ.custom.line.mem"
+            name="mem"
+            pos="2">
+            <o base=".plus" line="31" loc="Φ.custom.line.mem.α0" pos="5">
+               <o base="org.eolang.int"
+                  data="bytes"
+                  line="31"
+                  loc="Φ.custom.line.mem.α0.ρ"
+                  pos="4">00 00 00 00 00 00 00 01</o>
+               <o base="org.eolang.int"
+                  data="bytes"
+                  line="31"
+                  loc="Φ.custom.line.mem.α0.α0"
+                  pos="11">00 00 00 00 00 00 00 00</o>
+            </o>
+         </o>
+         <o base="org.eolang.seq"
+            line="32"
+            loc="Φ.custom.line.φ"
+            name="@"
+            pos="2">
+            <o base=".write" line="33" loc="Φ.custom.line.φ.α0" pos="7">
+               <o base="mem"
+                  line="33"
+                  loc="Φ.custom.line.φ.α0.ρ"
+                  pos="4"
+                  ref="30"/>
+               <o base=".plus"
+                  line="34"
+                  loc="Φ.custom.line.φ.α0.α0"
+                  pos="9">
+                  <o base="mem"
+                     line="34"
+                     loc="Φ.custom.line.φ.α0.α0.ρ"
+                     pos="6"
+                     ref="30"/>
+                  <o base="org.eolang.int"
+                     data="bytes"
+                     line="34"
+                     loc="Φ.custom.line.φ.α0.α0.α0"
+                     pos="15">00 00 00 00 00 00 00 01</o>
+               </o>
+            </o>
+            <o base=".write" line="35" loc="Φ.custom.line.φ.α1" pos="7">
+               <o base="mem"
+                  line="35"
+                  loc="Φ.custom.line.φ.α1.ρ"
+                  pos="4"
+                  ref="30"/>
+               <o base=".plus"
+                  line="36"
+                  loc="Φ.custom.line.φ.α1.α0"
+                  pos="9">
+                  <o base="mem"
+                     line="36"
+                     loc="Φ.custom.line.φ.α1.α0.ρ"
+                     pos="6"
+                     ref="30"/>
+                  <o base="org.eolang.int"
+                     data="bytes"
+                     line="36"
+                     loc="Φ.custom.line.φ.α1.α0.α0"
+                     pos="15">00 00 00 00 00 00 00 02</o>
+               </o>
+            </o>
+            <o base=".write" line="37" loc="Φ.custom.line.φ.α2" pos="7">
+               <o base="mem"
+                  line="37"
+                  loc="Φ.custom.line.φ.α2.ρ"
+                  pos="4"
+                  ref="30"/>
+               <o base=".plus"
+                  line="38"
+                  loc="Φ.custom.line.φ.α2.α0"
+                  pos="9">
+                  <o base="mem"
+                     line="38"
+                     loc="Φ.custom.line.φ.α2.α0.ρ"
+                     pos="6"
+                     ref="30"/>
+                  <o base="org.eolang.int"
+                     data="bytes"
+                     line="38"
+                     loc="Φ.custom.line.φ.α2.α0.α0"
+                     pos="15">00 00 00 00 00 00 00 03</o>
+               </o>
+            </o>
+            <o base=".write" line="39" loc="Φ.custom.line.φ.α3" pos="7">
+               <o base="mem"
+                  line="39"
+                  loc="Φ.custom.line.φ.α3.ρ"
+                  pos="4"
+                  ref="30"/>
+               <o base=".plus"
+                  line="40"
+                  loc="Φ.custom.line.φ.α3.α0"
+                  pos="9">
+                  <o base="mem"
+                     line="40"
+                     loc="Φ.custom.line.φ.α3.α0.ρ"
+                     pos="6"
+                     ref="30"/>
+                  <o base="org.eolang.int"
+                     data="bytes"
+                     line="40"
+                     loc="Φ.custom.line.φ.α3.α0.α0"
+                     pos="15">00 00 00 00 00 00 00 04</o>
+               </o>
+            </o>
+            <o base=".write" line="41" loc="Φ.custom.line.φ.α4" pos="7">
+               <o base="mem"
+                  line="41"
+                  loc="Φ.custom.line.φ.α4.ρ"
+                  pos="4"
+                  ref="30"/>
+               <o base=".plus"
+                  line="42"
+                  loc="Φ.custom.line.φ.α4.α0"
+                  pos="9">
+                  <o base="mem"
+                     line="42"
+                     loc="Φ.custom.line.φ.α4.α0.ρ"
+                     pos="6"
+                     ref="30"/>
+                  <o base="org.eolang.int"
+                     data="bytes"
+                     line="42"
+                     loc="Φ.custom.line.φ.α4.α0.α0"
+                     pos="15">00 00 00 00 00 00 00 05</o>
+               </o>
+            </o>
+            <o base=".write" line="43" loc="Φ.custom.line.φ.α5" pos="7">
+               <o base="mem"
+                  line="43"
+                  loc="Φ.custom.line.φ.α5.ρ"
+                  pos="4"
+                  ref="30"/>
+               <o base=".plus"
+                  line="44"
+                  loc="Φ.custom.line.φ.α5.α0"
+                  pos="9">
+                  <o base="mem"
+                     line="44"
+                     loc="Φ.custom.line.φ.α5.α0.ρ"
+                     pos="6"
+                     ref="30"/>
+                  <o base="org.eolang.int"
+                     data="bytes"
+                     line="44"
+                     loc="Φ.custom.line.φ.α5.α0.α0"
+                     pos="15">00 00 00 00 00 00 00 06</o>
+               </o>
+            </o>
+            <o base=".write" line="45" loc="Φ.custom.line.φ.α6" pos="7">
+               <o base="mem"
+                  line="45"
+                  loc="Φ.custom.line.φ.α6.ρ"
+                  pos="4"
+                  ref="30"/>
+               <o base=".plus"
+                  line="46"
+                  loc="Φ.custom.line.φ.α6.α0"
+                  pos="9">
+                  <o base="mem"
+                     line="46"
+                     loc="Φ.custom.line.φ.α6.α0.ρ"
+                     pos="6"
+                     ref="30"/>
+                  <o base="org.eolang.int"
+                     data="bytes"
+                     line="46"
+                     loc="Φ.custom.line.φ.α6.α0.α0"
+                     pos="15">00 00 00 00 00 00 00 07</o>
+               </o>
+            </o>
+            <o base=".write" line="47" loc="Φ.custom.line.φ.α7" pos="7">
+               <o base="mem"
+                  line="47"
+                  loc="Φ.custom.line.φ.α7.ρ"
+                  pos="4"
+                  ref="30"/>
+               <o base=".plus"
+                  line="48"
+                  loc="Φ.custom.line.φ.α7.α0"
+                  pos="9">
+                  <o base="mem"
+                     line="48"
+                     loc="Φ.custom.line.φ.α7.α0.ρ"
+                     pos="6"
+                     ref="30"/>
+                  <o base="org.eolang.int"
+                     data="bytes"
+                     line="48"
+                     loc="Φ.custom.line.φ.α7.α0.α0"
+                     pos="15">00 00 00 00 00 00 00 08</o>
+               </o>
+            </o>
+         </o>
+      </o>
+   </objects>
+</program>

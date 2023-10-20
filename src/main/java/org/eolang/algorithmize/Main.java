@@ -46,20 +46,29 @@ public final class Main implements Callable<Integer> {
      * Flag indicating whether the input file is EO-program.
      */
     @CommandLine.Option(names = { "--from" },
-        defaultValue = "false",
+        defaultValue = "xmir",
         description = "treat input file as EO program (not XMIR)")
     private String format;
+
+    /**
+     * Flag indicating whether the input file is EO-program.
+     */
+    @CommandLine.Option(names = { "--dest" },
+        defaultValue = "target/generated",
+        description = "treat input file as EO program (not XMIR)")
+    private File dest;
+
 
     /**
      * Absolute path to input file.
      */
     @CommandLine.Parameters(index = "0",
         description = "Absolute path of file to transform")
-    private File file;
+    private File src;
 
     @Override
     public Integer call() throws IOException {
-        System.out.println(file);
+        new Algothmize(this.src.toPath(), this.dest.toPath()).exec();
         return 0;
     }
 

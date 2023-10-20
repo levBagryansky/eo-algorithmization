@@ -23,7 +23,7 @@
  */
 
 /**
- * EO dejump.
+ * EO algorithmize.
  *
  * @author Objectionary.com
  * @since 0.0.1

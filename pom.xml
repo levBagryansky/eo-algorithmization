@@ -79,6 +79,11 @@ SOFTWARE.
       <version>${eolang.version}</version>
     </dependency>
     <dependency>
+      <groupId>org.eolang</groupId>
+      <artifactId>eo-maven-plugin</artifactId>
+      <version>${eolang.version}</version>
+    </dependency>
+    <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
       <!-- version from parent POM -->
@@ -123,7 +128,13 @@ SOFTWARE.
     <dependency>
       <groupId>com.jcabi</groupId>
       <artifactId>jcabi-manifests</artifactId>
+      <version>2.1.0</version>
       <!-- version from parent POM -->
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-plugin-api</artifactId>
+      <version>3.9.2</version>
     </dependency>
   </dependencies>
   <build>
@@ -181,6 +192,14 @@ SOFTWARE.
             </goals>
           </execution>
         </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>9</source>
+          <target>9</target>
+        </configuration>
       </plugin>
     </plugins>
   </build>
