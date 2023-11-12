@@ -9,11 +9,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class AST {
+public class AST_XML {
     private final Collection<EOObject> external;
     private final XML xml;
 
-    public AST(Collection<EOObject> external, final XML document) {
+    public AST_XML(Collection<EOObject> external, final XML document) {
         this.external = external;
         this.xml = document;
     }

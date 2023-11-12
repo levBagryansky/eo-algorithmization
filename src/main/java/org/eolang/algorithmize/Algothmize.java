@@ -2,6 +2,7 @@ package org.eolang.algorithmize;
 
 import com.jcabi.xml.XML;
 import com.jcabi.xml.XMLDocument;
+import org.eolang.algorithmize.AST.Node;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -35,7 +36,7 @@ public class Algothmize {
         this.insert(
             this.extractAST()
                 .stream()
-                .map(AST::toControlFlow)
+                .map(AST_XML::toControlFlow)
                 .map(Expressions::rustRepresentation)
                 .collect(Collectors.toList())
         );
@@ -45,16 +46,19 @@ public class Algothmize {
         }
     }
 
-    public List<AST> extractAST() {
+    public List<AST_XML> extractAST() {
         List<XML> parents = this.xml.nodes("//o[@base='org.eolang.seq']/..");
         //System.out.println("pretendents size = " + parents.size());
-        final List<AST> ret = new ArrayList<>();
+        final List<AST_XML> ret = new ArrayList<>();
         for (final XML parent: parents) {
             for (final XML seq: parent.nodes("o[@base='org.eolang.seq']")) {
                 //System.out.println();
                 //System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
                 //System.out.println(seq);
-                ret.add(new AST(this.exclusives(), seq));
+                ret.add(new AST_XML(this.exclusives(), seq));
+                System.out.println("\n\n");
+                System.out.println(Node.xml2Node(seq).toString(0));
+                System.out.println("\n\n");
             }
         }
         return ret;
