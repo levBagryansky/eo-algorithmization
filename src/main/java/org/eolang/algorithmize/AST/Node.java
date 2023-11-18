@@ -3,11 +3,36 @@ package org.eolang.algorithmize.AST;
 import com.jcabi.xml.XML;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Or children or value is null.
  */
 public class Node {
+
+    public Variable toVar() {
+        if (this.children == null || this.children.size() == 0) {
+            if ("org.eolang.bytes".equals(this.base)) {
+                return Variable.fromQQBytes(this);
+            } else {
+                throw new IllegalArgumentException("node.base = " + this.base);
+            }
+        }
+        List<Variable> vars = this.children.stream().map(node -> {
+            Variable var = node.toVar();
+            System.out.println(var);
+            return var;
+        }).collect(Collectors.toList());
+        switch (this.base) {
+            case ".plus":
+                return Variable.fromPlus(vars);
+            case "org.eolang.int":
+                return Variable.fromAsInt(vars);
+        }
+
+        return null;
+    }
+
     List<Node> children;
     String base;
     String value;
@@ -21,8 +46,15 @@ public class Node {
     public static Node xml2Node(final XML xml) {
         final String base = xml.xpath("@base").get(0);
         List<XML> raw_children = xml.nodes("o");
-        if (raw_children.size() == 0 && !"mem".equals(base)) {
-            String value = xml.xpath("text()").get(0);
+        if (raw_children.size() == 0) {
+            String value;
+
+            if ("mem".equals(base)) {
+                value = null;
+            }
+            else {
+                value = xml.xpath("text()").get(0);
+            }
             return new Node(new ArrayList<>(), base, value);
         } else {
             final List<Node> children = new ArrayList<>();
@@ -38,18 +70,19 @@ public class Node {
         for (int i = 0; i < indentation; i++) {
             builder.append(" ");
         }
-        if (this.value != null) {
+        builder.append(
+            String.format("base = %s, value = %s, ", this.base, this.value)
+        );
+        if (children.size() != 0){
             builder.append(
-                String.format("base = %s, value = %s\n", this.base, this.value)
+                "children:\n"
             );
-        } else {
-            assert this.children != null;
             for (final Node child: this.children) {
-                builder.append(String.format(
-                    "base = %s, children:\n", base
-                ));
-                builder.append(child.toString(3));
+                builder.append(child.toString(indentation + 3));
             }
+        }
+        else {
+            builder.append("\n");
         }
         return builder;
     }
