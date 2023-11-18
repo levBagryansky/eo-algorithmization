@@ -68,7 +68,7 @@ public final class Main implements Callable<Integer> {
 
     @Override
     public Integer call() throws IOException {
-        new Algothmize(this.src.toPath(), this.dest.toPath()).exec();
+        new Algorithmize(this.src.toPath(), this.dest.toPath()).exec();
         return 0;
     }
 

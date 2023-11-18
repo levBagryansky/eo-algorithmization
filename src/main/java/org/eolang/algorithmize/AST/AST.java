@@ -1,6 +1,8 @@
 package org.eolang.algorithmize.AST;
 
 import org.eolang.algorithmize.EOObject;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -25,7 +27,14 @@ public class AST {
         this.external = external;
     }
 
+    public List<Variable> getVars() {
+        final List<Variable> res = new ArrayList<>();
+        head.toVar(res);
+        return res;
+    }
+
     public void dumpVars() {
-        System.out.println(head.toVar());
+        final List<Variable> res = this.getVars();
+        res.forEach(System.out::println);
     }
 }

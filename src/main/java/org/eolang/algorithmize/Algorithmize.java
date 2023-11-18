@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Algothmize {
+public class Algorithmize {
 
     private final Path src;
 
@@ -20,7 +20,7 @@ public class Algothmize {
 
     private XMLDocument xml;
 
-    public Algothmize(final Path src, final Path dest) {
+    public Algorithmize(final Path src, final Path dest) {
         this.src = src;
         this.dest = dest;
     }

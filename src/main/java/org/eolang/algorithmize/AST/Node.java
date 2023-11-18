@@ -10,27 +10,33 @@ import java.util.stream.Collectors;
  */
 public class Node {
 
-    public Variable toVar() {
+    public Variable toVar(final List<Variable> accumulator) {
+        Variable ret = null;
         if (this.children == null || this.children.size() == 0) {
             if ("org.eolang.bytes".equals(this.base)) {
-                return Variable.fromQQBytes(this);
+                ret = Variable.fromQQBytes(this);
             } else {
                 throw new IllegalArgumentException("node.base = " + this.base);
             }
         }
         List<Variable> vars = this.children.stream().map(node -> {
-            Variable var = node.toVar();
-            System.out.println(var);
+            Variable var = node.toVar(accumulator);
+            //System.out.println(var);
             return var;
         }).collect(Collectors.toList());
         switch (this.base) {
             case ".plus":
-                return Variable.fromPlus(vars);
+                ret = Variable.fromPlus(vars);
+                break;
             case "org.eolang.int":
-                return Variable.fromAsInt(vars);
+                ret = Variable.fromAsInt(vars);
+                break;
         }
-
-        return null;
+        accumulator.add(ret);
+        if (ret == null) {
+            throw new IllegalArgumentException("node.base = " + this.base);
+        }
+        return ret;
     }
 
     List<Node> children;

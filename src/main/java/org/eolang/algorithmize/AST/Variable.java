@@ -31,8 +31,6 @@ public class Variable {
             String.format("%s.as_slice().read_i64::<BigEndian>().unwrap()", args.get(0).name),
             "i64"
         );
-        //System.out.println("returning null, fromAsInt");
-        //return null;
     }
     public static Variable fromPlus(List<Variable> args){
         if (args != null && args.size() == 2 && "i64".equals(args.get(0).type) && "i64".equals(args.get(1).type)) {
@@ -65,7 +63,9 @@ public class Variable {
                 "var_" + AST.nextId.getAndIncrement(),
                     String.format(
                         "vec![%s]",
-                        Arrays.stream(node.value.split(" ")).map(word -> "0x" + word).reduce("", (a, b) -> a + b + ", ")
+                        Arrays.stream(node.value.split(" "))
+                            .map(word -> "0x" + word)
+                            .reduce("", (a, b) -> a + b + ", ")
                         ),
                     "Vec<u8>"
                 );
