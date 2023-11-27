@@ -24,7 +24,10 @@
 package org.eolang.algorithmize;
 
 import com.jcabi.manifests.Manifests;
+import org.xml.sax.SAXException;
 import picocli.CommandLine;
+
+import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.Callable;
@@ -67,7 +70,7 @@ public final class Main implements Callable<Integer> {
     private File src;
 
     @Override
-    public Integer call() throws IOException {
+    public Integer call() throws IOException, ParserConfigurationException, SAXException {
         new Algorithmize(this.src.toPath(), this.dest.toPath()).exec();
         return 0;
     }

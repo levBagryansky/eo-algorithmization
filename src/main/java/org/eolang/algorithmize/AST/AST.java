@@ -5,11 +5,14 @@ import org.eolang.algorithmize.EOObject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 
 /**
  * AST.
  */
 public class AST {
+
+    public final List<Variable> vars = new ArrayList<>();
 
     public static AtomicInteger nextId = new AtomicInteger(0);
 
@@ -27,6 +30,11 @@ public class AST {
         this.external = external;
     }
 
+    public AST(final Node node) {
+        this.head = node;
+        this.external = new ArrayList<>();
+    }
+
     public List<Variable> getVars() {
         final List<Variable> res = new ArrayList<>();
         head.toVar(res);
@@ -36,5 +44,18 @@ public class AST {
     public void dumpVars() {
         final List<Variable> res = this.getVars();
         res.forEach(System.out::println);
+    }
+
+    public String rustCode() {
+        final List<Variable> res = this.getVars();
+        StringBuilder builder = new StringBuilder("use eo::Portal;\n" +
+            "use eo::eo_enum::EO;\n" +
+            "use eo::eo_enum::EO::{EOInt};\n" +
+            "use byteorder::{BigEndian, ReadBytesExt};\n" +
+            "\n" +
+            "pub fn foo(env: &mut Portal) -> Option<EO> {\n");
+        res.forEach(var -> builder.append("   ").append(var.toString()).append("\n"));
+        builder.append(String.format("    return Some(EOInt(%s));\n}\n", res.get(res.size()-1).name));
+        return builder.toString();
     }
 }
