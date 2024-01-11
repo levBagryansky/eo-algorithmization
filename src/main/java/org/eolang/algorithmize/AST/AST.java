@@ -5,7 +5,6 @@ import org.eolang.algorithmize.EOObject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.Collectors;
 
 /**
  * AST.
@@ -57,5 +56,13 @@ public class AST {
         res.forEach(var -> builder.append("   ").append(var.toString()).append("\n"));
         builder.append(String.format("    return Some(EOInt(%s));\n}\n", res.get(res.size()-1).name));
         return builder.toString();
+    }
+
+    public boolean algorithmizable() {
+        if (this.external == null || this.external.size() == 0) {
+            System.out.println("DEPTH = " + this.head.depth());
+            return this.head.depth() > 10;
+        }
+        return false;
     }
 }

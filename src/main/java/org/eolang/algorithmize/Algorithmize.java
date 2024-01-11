@@ -37,23 +37,26 @@ public class Algorithmize {
      * Algorithmize and saves it to
      */
     public void exec() throws IOException, ParserConfigurationException, SAXException {
-        //System.out.println("Hello world");
-        //System.out.println(this.src);
-        //System.out.println("Hello world");
         this.xml = new XMLDocument(this.src);
         List<XML> line_4_childs = this.xml.nodes("//o[@name='line-4']/o");
-        final String code = new AST(Node.xml2Node(line_4_childs.get(0))).rustCode();
+        final AST line4_ast = new AST(Node.xml2Node(line_4_childs.get(0)));
+        if (!line4_ast.algorithmizable()) {
+            return;
+        }
+        final String code = line4_ast.rustCode();
         System.out.println(code);
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
         Document document = builder.parse(this.src.toFile());
-        Element rust = document.createElement("o");
-        rust.setAttribute("base", ".rust");
-        rust.setTextContent(code);
-        document.getDocumentElement().appendChild(this.buildRustElement(document, Algorithmize.hex(code)));
-        System.out.println(new XMLDocument(document));
+        Element rust = this.buildRustElement(document, Algorithmize.hex(code));
+        org.w3c.dom.Node line4Node = document
+            .getElementsByTagName("objects")
+            .item(0)
+            .getChildNodes()
+            .item(3);
+        line4Node.replaceChild(rust, line4Node.getChildNodes().item(1));
         try (FileWriter out = new FileWriter(dest.toFile())) {
-            out.write(this.xml.toString());
+            out.write(new XMLDocument(document).toString());
             out.flush();
         }
     }
@@ -62,7 +65,7 @@ public class Algorithmize {
         final StringBuilder out = new StringBuilder(0);
         for (final byte data : new UncheckedBytes(new BytesOf(content)).asBytes()) {
             if (out.length() > 0) {
-                out.append('-');
+                out.append(' ');
             }
             out.append(String.format("%02X", data));
         }
@@ -87,6 +90,7 @@ public class Algorithmize {
         first_obj.appendChild(first_obj_bytes);
 
         rust.appendChild(first_obj);
+
 
 
         return rust;

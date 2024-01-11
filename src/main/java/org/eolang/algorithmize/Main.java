@@ -57,7 +57,7 @@ public final class Main implements Callable<Integer> {
      * Flag indicating whether the input file is EO-program.
      */
     @CommandLine.Option(names = { "--dest" },
-        defaultValue = "target/generated",
+        defaultValue = "target/generated.xmir",
         description = "treat input file as EO program (not XMIR)")
     private File dest;
 

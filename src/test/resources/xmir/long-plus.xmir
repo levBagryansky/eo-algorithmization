@@ -222,7 +222,7 @@ SOFTWARE.</license>
          name="line-rust$t1$t1$a1"
          parent="line-rust"
          pos="6"/>
-       <o abstract=""
+      <o abstract=""
           line="87"
           loc="Φ.org.eolang.line-4"
           name="line-4"

@@ -10,6 +10,10 @@ import java.util.stream.Collectors;
  */
 public class Node {
 
+    List<Node> children;
+    String base;
+    String value;
+
     public Variable toVar(final List<Variable> accumulator) {
         Variable ret = null;
         if (this.children == null || this.children.size() == 0) {
@@ -38,10 +42,6 @@ public class Node {
         }
         return ret;
     }
-
-    List<Node> children;
-    String base;
-    String value;
 
     public Node(List<Node> children, String base, String value) {
         this.children = children;
@@ -91,5 +91,19 @@ public class Node {
             builder.append("\n");
         }
         return builder;
+    }
+
+    public int depth() {
+        if (this.children == null || this.children.size() == 0) {
+            return 0;
+        }
+
+        int max = 0;
+        for (final Node item: this.children) {
+            if (item.depth() > max) {
+                max = item.depth();
+            }
+        }
+        return max + 1;
     }
 }
